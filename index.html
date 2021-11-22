@@ -17,7 +17,7 @@
 <body>
   <main>
     <nav>
-      <h1>POS</h1>
+      <h1>Point of Sale</h1>
 
       <div>
         <button id="add-product">
@@ -61,6 +61,28 @@
       </table>
 
       <button id="btn-checkout">Checkout</button>
+
+      <table id="receipt-table">
+        <tr>
+          <th id="receipt-title" colspan="3">
+            RECEIPT
+            <br>
+            <p id="receipt-datetime">datetime</p>
+          </th>
+        </tr>
+
+        <tr id="receipt-header">
+          <th>NAME</th>
+          <th id="th-quantity">QUANTITY</th>
+          <th id="th-price">PRICE</th>
+        </tr>
+
+        <tr id="total">
+          <td>&nbsp;</td>
+          <td id="title">Total:</td>
+          <td id="receipt-price">₱ 0</td>
+        </tr>
+      </table>
     </div>
   </main>
 </body>

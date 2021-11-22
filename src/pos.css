@@ -39,13 +39,14 @@ nav :last-child {
 }
 #products-table {
   width: 100%;
-
   border-collapse: collapse;
 }
-#products-table td {
+#products-table td,
+#receipt-table td {
   padding: 0.6rem;
 }
-#products-table th {
+#products-table th,
+#receipt-table th {
   padding: 0.6rem;
   text-align: left;
 }
@@ -76,4 +77,22 @@ nav :last-child {
 #btn-checkout {
   margin-top: 20px;
   width: 100%;
+}
+
+
+#receipt-table {
+  display: none;
+  margin: 50px auto 0px auto;
+  border-collapse: collapse;
+  border: 2px solid var(--secondary);
+}
+#receipt-table tr:first-of-type th {
+  text-align: center;
+  font-size: 1.4rem;
+}
+#receipt-datetime {
+  margin: 6px auto 10px auto;
+  font-weight: normal;
+  font-size: 0.8rem;
+  width: 60%;
 }

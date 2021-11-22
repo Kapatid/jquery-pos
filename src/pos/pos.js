@@ -1,5 +1,6 @@
-import { Product, Cart, CartProduct } from "./classes.js"
+import { Product, Cart, CartProduct, Receipt } from "./classes.js"
 import ProductRow from "./ProductRow.js"
+import ReceiptRow from "./ReceiptRow.js"
 
 /**
  * Returns a random number based on given min & max.
@@ -65,6 +66,7 @@ const addProduct = (cartProduct) => {
   })
 }
 
+let btnAddProdClicked = false
 /**
  * Check if product already exists in cart.
  * 
@@ -76,18 +78,43 @@ const isProductInCart = (cartProduct) => {
   cart.products.forEach(function(item, index) {
     if (item.product.name === cartProduct.product.name) {
       productInCart = true
-      $('#alert')
-        .text(`${cartProduct.product.name} is already in cart.`)
+      
+      if (!btnAddProdClicked) {
+        $('#alert')
+          .text(`${cartProduct.product.name} is already in cart.`)
 
-      $('#alert').fadeIn('fast', function() {
-        $(this).delay(1000).fadeOut('slow')
-      })
+        $('#alert').fadeIn('fast', function() {
+          btnAddProdClicked = true
+
+          $(this).delay(1000).fadeOut('slow', function() {
+            btnAddProdClicked = false
+          })
+        })
+      }
 
       return
     }
   })
 
   !productInCart && addProduct(cartProduct)
+}
+
+/**
+ * Used to display receipt and the products in it.
+ * 
+ * @param {Receipt} receipt
+ */
+const showReceipt = (receipt) => {
+  $('#receipt-table').show()
+
+  receipt.products.forEach((item) => {
+    $('#receipt-header').after(ReceiptRow(item))
+  })
+
+  const today = new Date(receipt.createdAt)
+  today.toUTCString()
+  $('#receipt-datetime').text(today)
+  $('#receipt-price').text(`₱ ${receipt.totalPrice}`)
 }
 
 /** Main function for executing POS logic. */
@@ -107,9 +134,13 @@ export default function Pos(){
 
   $('#btn-checkout').on('click', function() {
     if (cart.products.length !== 0) {
+      let receipt = new Receipt(cart.products)
       cart = new Cart([], 0)
+
       $('.product').remove()
       $('#price').text(`₱ ${cart.totalPrice}`)
+      
+      showReceipt(receipt)
 
       alert('Checkout successful!')
     } else {

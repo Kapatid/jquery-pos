@@ -23,11 +23,9 @@ export class CartProduct {
 export class Cart {
   /**
    * @param {CartProduct[]} products
-   * @param {number} total
    */
-  constructor(products, total) {
+  constructor(products) {
     this.products = Array.isArray(products) ? products : null
-    this.total = typeof total === 'number' ? total : null
   }
 
   /**
@@ -43,5 +41,21 @@ export class Cart {
     })
 
     return total
+  }
+}
+
+export class Receipt extends Cart {
+  static createdAt
+
+  /**
+   * @param {CartProduct[]} products 
+   */
+  constructor(products) {
+    super(products)
+
+    /**
+     * @type {Date}
+     */
+    this.createdAt = Date.now()
   }
 }
