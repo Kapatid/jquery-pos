@@ -1,4 +1,4 @@
-import { Product, Cart, CartProduct, Receipt } from "./classes.js"
+import { Product, Cart, CartProduct, Receipt } from "./models.js"
 import ProductRow from "./ProductRow.js"
 import ReceiptRow from "./ReceiptRow.js"
 
@@ -139,7 +139,7 @@ export default function Pos(){
 
       $('.product').remove()
       $('#price').text(`₱ ${cart.totalPrice}`)
-      
+
       showReceipt(receipt)
 
       alert('Checkout successful!')

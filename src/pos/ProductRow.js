@@ -1,11 +1,11 @@
-import { CartProduct } from "./classes.js"
+import { CartProduct } from "./models.js"
 
 /**
  * Product component to be used for viewing 
  * details of a product.
  * 
  * @param {CartProduct} cartProduct 
- * @returns {string} element
+ * @returns {string} HTMLElement
  */
 const ProductRow = (cartProduct) => {
   return `

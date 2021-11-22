@@ -45,17 +45,15 @@ export class Cart {
 }
 
 export class Receipt extends Cart {
-  static createdAt
-
+  // Not needed but useful for JSDOC
+  createdAt = new Date()
+  
   /**
    * @param {CartProduct[]} products 
    */
   constructor(products) {
     super(products)
 
-    /**
-     * @type {Date}
-     */
     this.createdAt = Date.now()
   }
 }
