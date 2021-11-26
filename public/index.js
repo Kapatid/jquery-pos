@@ -3,14 +3,14 @@ import App from "./App.js"
 export default class AppDOM {
   /**
    * Inserts components to HTML
-   * @param {{ html: string, callback?: () => void}[]} component 
+   * @param {{ strHTML: string, callback?: () => void}[]} component 
    * @param {string} elementId 
    */
   render(component, elementId) {
     component.forEach((item) => {
-      const { str, callback } = item
+      const { strHTML, callback } = item
 
-      $(`#${elementId}`).append(str)
+      $(`#${elementId}`).append(strHTML)
       
       if (callback) {
         callback()
