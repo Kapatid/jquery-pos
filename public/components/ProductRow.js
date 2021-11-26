@@ -1,4 +1,4 @@
-import { CartProduct } from "./models.js"
+import { CartProduct } from "../models.js"
 
 /**
  * Product component to be used for viewing 
