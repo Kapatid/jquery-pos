@@ -3,18 +3,15 @@ import App from "./App.js"
 export default class AppDOM {
   /**
    * Inserts components to HTML
-   * @param {{ strHTML: string, callback?: () => void}[]} component 
-   * @param {string} elementId 
+   * @param {[ strHTML: string, callback: () => void ][]} components 
+   * @param {string} rootId 
    */
-  render(component, elementId) {
-    component.forEach((item) => {
-      const { strHTML, callback } = item
+  render(components, rootId) {
+    components.forEach(([ strHTML, callback ]) => {
 
-      $(`#${elementId}`).append(strHTML)
+      $(`#${rootId}`).append(strHTML)
       
-      if (callback) {
-        callback()
-      }
+      callback !== undefined && callback()
     })
   }
 }

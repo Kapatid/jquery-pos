@@ -191,4 +191,4 @@ const Pos = () => `
   </div>
 `
 
-export default { strHTML: Pos, callback: controller }
+export default [ Pos, controller ]

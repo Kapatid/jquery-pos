@@ -26,4 +26,4 @@ const Navbar = () => `
     </div>
   </nav>
 `
-export default { strHTML: Navbar }
+export default [ Navbar ]
