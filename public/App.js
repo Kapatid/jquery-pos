@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar.js'
-import Pos from './components/pos.js'
+import Pos from './components/Pos.js'
 import AppDOM from './index.js'
 
 /**
